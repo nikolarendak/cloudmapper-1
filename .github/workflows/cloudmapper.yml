@@ -19,8 +19,8 @@ jobs:
     - name: Build CloudMapper Docker container
       run: |
         docker build -t my-cloudmapper-docker .
-        docker tag my-cloudmapper-docker:latest my-registry/my-cloudmapper-docker:latest
-        docker push my-registry/my-cloudmapper-docker:latest
+        docker tag cloudmapper-docker:latest/home/bronson/cloudmapper-docker:latest
+        docker push /home/bronson/cloudmapper/-docker:latest
 
     - name: Scan AWS environment with CloudMapper
       run: |
@@ -30,5 +30,5 @@ jobs:
           -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
           -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
           -e AWS_DEFAULT_REGION=${{ secrets.AWS_DEFAULT_REGION }} \
-          my-registry/my-cloudmapper-docker \
+          /home/bronson/cloudmapper/ \
           python3 cloudmapper.py collect --account Nikola_test_4 --no-upload
