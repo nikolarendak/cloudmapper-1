@@ -15,10 +15,6 @@ jobs:
       run: |
        ln -sf /usr/share/zoneinfo/Europe/Skopje /etc/localtime
 
-    - name: Install NTP on Docker container
-      run: |
-        apt-get update && apt-get install -y ntp
-        service ntp start
 
     - name: Build CloudMapper Docker container
       run: |
