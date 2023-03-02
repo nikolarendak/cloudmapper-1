@@ -29,7 +29,7 @@ jobs:
     - name: Configuration Docker
       run: |
        docker run \
-       -v $(pwd):/cloudmapper \
+       -v $(pwd)/cloudmapper:/cloudmapper \
        -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
        -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
        -e AWS_DEFAULT_REGION=eu-west-1 \
@@ -39,7 +39,7 @@ jobs:
     - name: Configuration Docker
       run: |
        docker run \
-       -v $(pwd):/cloudmapper \
+       -v $(pwd)/cloudmapper:/cloudmapper \
        -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
        -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
        -e AWS_DEFAULT_REGION=eu-west-1 \
@@ -49,7 +49,7 @@ jobs:
     - name: Configuration Docker
       run: |
        docker run \
-       -v $(pwd):/cloudmapper \
+       -v $(pwd)/cloudmapper:/cloudmapper \
        -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
        -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
        -e AWS_DEFAULT_REGION=eu-west-1 \
