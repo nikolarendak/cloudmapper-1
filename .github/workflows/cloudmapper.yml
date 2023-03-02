@@ -13,7 +13,7 @@ jobs:
 
     - name: Build CloudMapper Docker container
       run: |
-        docker build -t my-cloudmapper-docker .
+        docker build -t nikolarendak/cloudmapper-1 .
 
     - name: Scan AWS environment with CloudMapper
       run: |
