@@ -25,6 +25,7 @@ jobs:
         -e AWS_DEFAULT_REGION=eu-west-1 \
         nikolarendak/cloudmapper-1 \
         python cloudmapper.py configure add-account --config-file config.json --name Nikola_test_4 --id 796966033397
+        
     - name: Configuration Docker
       run: |
        docker run \
@@ -44,6 +45,7 @@ jobs:
        -e AWS_DEFAULT_REGION=eu-west-1 \
        nikolarendak/cloudmapper-1 \
        python cloudmapper.py report --account Nikola_test_4
+       
     - name: Configuration Docker
       run: |
        docker run \
