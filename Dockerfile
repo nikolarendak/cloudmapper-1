@@ -13,6 +13,6 @@ RUN apt-get install -y bash
 
 COPY . /opt/cloudmapper
 RUN pip install -r requirements.txt
-RUN pip install --force-install pyjq==2.4.0
+RUN pip install --force-reinstall pyjq==2.4.0
 
 RUN bash
