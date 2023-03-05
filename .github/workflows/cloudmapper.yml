@@ -27,12 +27,6 @@ jobs:
         bash -c "python cloudmapper.py configure add-account --config-file config.json --name Nikola_test_4 --id 796966033397 &&
         python cloudmapper.py collect --account Nikola_test_4 &&
         python cloudmapper.py report --account Nikola_test_4 &&
-        python cloudmapper.py prepare --account Nikola_test_4"
+        python cloudmapper.py prepare --account Nikola_test_4
+        cp -R cloudmapper/account-data /results"
         
-        - name: Upload report files
-          uses: actions/upload-artifact@v3
-          with:
-          name: cloudmapper-reports
-          path: |
-          cloudmapper/account-data/
-          cloudmapper/report/   
