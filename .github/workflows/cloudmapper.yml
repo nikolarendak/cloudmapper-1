@@ -13,38 +13,27 @@ jobs:
 
     - name: Build CloudMapper Docker container
       run: |
-       docker build -t nikolarendak/cloudmapper-1 .
-      
-       - name: Scan AWS environment with CloudMapper
-         run: |
-          docker run \
-          -e TZ=Europe/Skopje \
-          -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
-          -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
-          -e AWS_DEFAULT_REGION=eu-west-1 \
-          -v $(pwd)/cloudmapper:/cloudmapper \
-          -v cloudmapper-data:/cloudmapper/data \
-          nikolarendak/cloudmapper-1 \
-          bash -c "python cloudmapper.py configure add-account --config-file config.json --name Nikola_test_4 --id 796966033397 &&
-          python cloudmapper.py collect --account Nikola_test_4 &&
-          python cloudmapper.py report --account Nikola_test_4 &&
-          python cloudmapper.py prepare --account Nikola_test_4 &&
-          python cloudmapper.py report --account Nikola_test_4 --output-dir /cloudmapper/data --format html --output-name report.html"
-        
-        - name: Download CloudMapper results
-          uses: docker://ghcr.io/docker/extract-action:v2.2.0
-          with:
-          image: busybox
-          entrypoint: /bin/sh
-          commands: |
-          mkdir -p cloudmapper-results
-          docker run -v cloudmapper-data:/source -v $(pwd)/cloudmapper-results:/destination busybox tar -cf - -C /source . | tar -xf - -C /destination
-        
-        - name: Upload CloudMapper results
-          uses: actions/upload-artifact@v2
-          with:
-          name: cloudmapper-results
-          path: cloudmapper-results
+        docker build -t nikolarendak/cloudmapper-1 .
 
+    - name: Scan AWS environment with CloudMapper
+      run: |
+        docker run \
+        -v cloudmapper-data:/cloudmapper/data \
+        -e TZ=Europe/Skopje \
+        -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
+        -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
+        -e AWS_DEFAULT_REGION=eu-west-1 \
+        nikolarendak/cloudmapper-1 \
+        bash -c "python cloudmapper.py configure add-account --config-file config.json --name Nikola_test_4 --id 796966033397 &&
+        python cloudmapper.py collect --account Nikola_test_4 &&
+        python cloudmapper.py report --account Nikola_test_4 &&
+        python cloudmapper.py prepare --account Nikola_test_4 &&
+        python cloudmapper.py report --account Nikola_test_4 --output-dir /cloudmapper/data --format html --output-name report.html"
+
+    - name: Upload CloudMapper results
+      uses: actions/upload-artifact@v3
+      with:
+        name: cloudmapper-results
+        path: /var/lib/docker/volumes/cloudmapper-data/_data/
       
         
