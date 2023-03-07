@@ -19,7 +19,7 @@ jobs:
     - name: Scan AWS environment with CloudMapper
       run: |
         docker run \
-        -v cloudmapper-data:/cloudmapper/data \
+        -v cloudmapper-data:/cloudmapper/account-data \
         -e TZ=Europe/Skopje \
         -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
         -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
@@ -29,13 +29,8 @@ jobs:
         python cloudmapper.py collect --account Nikola_test_4 &&
         python cloudmapper.py report --account Nikola_test_4 &&
         python cloudmapper.py prepare --account Nikola_test_4 &&
+        pwd &&
         ls &&
-        bash -c cp -a /opt/cloudmapper/account-data /cloudmapper/data/"
-
-        - name: Upload CloudMapper results
-          uses: actions/upload-artifact@v3
-          with:
-           name: cloudmapper-results
-           path: results/report.html
+        bash -c cp -a /opt/cloudmapper/account-data/. /cloudmapper/account-data/"
       
         
