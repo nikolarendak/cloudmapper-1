@@ -30,7 +30,7 @@ jobs:
         python cloudmapper.py report --account Nikola_test_4 &&
         python cloudmapper.py prepare --account Nikola_test_4 &&
         ls &&
-        cp -a /opt/cloudmapper/account-data /cloudmapper/data/"
+        bash -c cp -a /opt/cloudmapper/account-data /cloudmapper/data/"
 
         - name: Upload CloudMapper results
           uses: actions/upload-artifact@v3
