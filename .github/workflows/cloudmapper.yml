@@ -27,13 +27,12 @@ jobs:
         bash -c "python cloudmapper.py configure add-account --config-file config.json --name Nikola_test_4 --id 796966033397 &&
         python cloudmapper.py collect --account Nikola_test_4 &&
         python cloudmapper.py report --account Nikola_test_4 &&
-        python cloudmapper.py prepare --account Nikola_test_4 &&
-        python cloudmapper.py report --account Nikola_test_4 --format html --output-name /cloudmapper/data/report.html"
+        python cloudmapper.py prepare --account Nikola_test_4 &&"
 
-    - name: Upload CloudMapper results
-      uses: actions/upload-artifact@v3
-      with:
-        name: cloudmapper-results
-        path: /var/lib/docker/volumes/cloudmapper-data/_data/
+        - name: Upload CloudMapper results
+          uses: actions/upload-artifact@v2
+          with:
+           name: cloudmapper-results
+           path: results/report.html
       
         
