@@ -31,6 +31,6 @@ jobs:
         python cloudmapper.py prepare --account Nikola_test_4 &&
         pwd &&
         ls &&
-        bash -c cp -a /opt/cloudmapper/account-data/. /cloudmapper/account-data/"
+        bash -c cp -r /opt/cloudmapper/account-data/. /cloudmapper/account-data/"
       
         
