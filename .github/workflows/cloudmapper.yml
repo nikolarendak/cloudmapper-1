@@ -33,4 +33,13 @@ jobs:
         ls &&
         cp -r /opt/cloudmapper/account-data/. /cloudmapper/account-data/"
       
-        
+        - name: Commit CloudMapper data to GitHub repository
+          run: |
+           git config --global user.name "nikolarendak"
+           git config --global user.email "nikola.rendak@gmail.com"
+           git clone https://github.com/nikolarendak/cloudmapper-1.git
+           cd cloudmapper-1
+           cp -r /cloudmapper/account-data/. .
+           git add .
+           git commit -m "Commit OK"
+           git push
