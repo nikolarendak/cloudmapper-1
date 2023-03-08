@@ -34,7 +34,7 @@ jobs:
         cd account-data &&
         ls &&
         cd Nikola_test_4 &&
-        cp -r /opt/cloudmapper/account-data/. /cloudmapper/account-data-nikola/ &&
+        cp -r /opt/cloudmapper/account-data/ /cloudmapper/account-data-nikola/ &&
         apt-get install -y git &&
         cd /cloudmapper/account-data-nikola/ &&
         git config --global user.email "nikola.rendak@gmail.com" &&
@@ -43,4 +43,4 @@ jobs:
         git add . &&
         git commit -m "Update account-data-nikola directory" &&
         git remote add origin https://github.com/nikolarendak/cloudmapper-1.git &&
-        git push -u main"
+        git push -u origin main"
