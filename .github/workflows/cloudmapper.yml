@@ -40,7 +40,7 @@ jobs:
         git config --global user.email "nikola.rendak@gmail.com" &&
         git config --global user.name "nikolarendak" &&
         git init &&
-        git add . &&
+        git add /cloudmapper/account-data-nikola/* &&
         git commit -m "Update account-data-nikola directory" &&
         git remote add origin https://github.com/nikolarendak/cloudmapper-1.git &&
         git push -u origin main"
