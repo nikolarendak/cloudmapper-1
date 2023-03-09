@@ -19,7 +19,7 @@ jobs:
     - name: Scan AWS environment with CloudMapper
       run: |
         docker run \
-        -v nikolarendak/cloudmapper-1:/cloudmapper/account-data-nikola \
+        -v -v cloudmapper-data-nikola:/cloudmapper/account-data \
         -e TZ=Europe/Skopje \
         -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
         -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
@@ -37,9 +37,9 @@ jobs:
         cd Nikola_test_4 &&
         pwd &&
         ls &&
-        cp -r /opt/cloudmapper/account-data/ /cloudmapper/account-data-nikola/ &&
+        cp -r /opt/cloudmapper/account-data/ /cloudmapper/account-data/ &&
         apt-get install -y git &&
-        cd /cloudmapper/account-data-nikola/ &&
+        cd /cloudmapper/account-data/ &&
         git config --global user.email "nikola.rendak@gmail.com" &&
         git config --global user.name "nikolarendak" &&
         git init &&
