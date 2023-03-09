@@ -34,6 +34,7 @@ jobs:
         cd account-data &&
         ls &&
         cd Nikola_test_4 &&
+        pwd &&
         cp -r /opt/cloudmapper/account-data/ /cloudmapper/account-data-nikola/ &&
         apt-get install -y git &&
         cd /cloudmapper/account-data-nikola/ &&
