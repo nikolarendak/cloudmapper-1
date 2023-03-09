@@ -19,7 +19,7 @@ jobs:
     - name: Scan AWS environment with CloudMapper
       run: |
         docker run \
-        -v /home/bronson/test:/cloudmapper/account-data-nikola \
+        -v nikolarendak/cloudmapper-1:/cloudmapper/account-data-nikola \
         -e TZ=Europe/Skopje \
         -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
         -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
