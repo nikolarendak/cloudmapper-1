@@ -14,7 +14,7 @@ jobs:
     - name: Build CloudMapper Docker container
       run: |
         docker build -t nikolarendak/cloudmapper-1 .
-        docker volume create cloudmapper-data
+        docker volume create cloudmapper-data-nikola
 
     - name: Scan AWS environment with CloudMapper
       run: |
@@ -46,4 +46,5 @@ jobs:
         git add . &&
         git commit -m "Update account-data-nikola directory" &&
         git remote add origin https://github.com/nikolarendak/cloudmapper-1.git &&
-        git push -u origin main"
+        git push -u origin main
+        sleep 45"
