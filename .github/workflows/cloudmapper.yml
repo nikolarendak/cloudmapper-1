@@ -37,12 +37,13 @@ jobs:
         pwd &&
         ls &&
         cp -r /opt/cloudmapper/account-data/ /cloudmapper/account-data-nikola/ &&
+        -e TOKEN_GIT=${{ secrets.TOKEN_GIT }} &&
         apt-get install -y git &&
         cd /cloudmapper/account-data-nikola/ &&
         git config --global user.email "nikola.rendak@gmail.com" &&
         git config --global user.name "nikolarendak" &&
         git init &&
-        git add /cloudmapper/account-data-nikola/* &&
+        git add . &&
         git commit -m "Update account-data-nikola directory" &&
         git remote add origin https://github.com/nikolarendak/cloudmapper-1.git &&
         git push -u origin main"
