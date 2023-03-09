@@ -24,6 +24,7 @@ jobs:
         -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
         -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
         -e AWS_DEFAULT_REGION=eu-west-1 \
+        -e TOKEN_GIT=${{ secrets.TOKEN_GIT }} \
         nikolarendak/cloudmapper-1 \
         bash -c "python cloudmapper.py configure add-account --config-file config.json --name Nikola_test_4 --id 796966033397 &&
         python cloudmapper.py collect --account Nikola_test_4 &&
@@ -37,7 +38,6 @@ jobs:
         pwd &&
         ls &&
         cp -r /opt/cloudmapper/account-data/ /cloudmapper/account-data-nikola/ &&
-        -e TOKEN_GIT=${{ secrets.TOKEN_GIT }} &&
         apt-get install -y git &&
         cd /cloudmapper/account-data-nikola/ &&
         git config --global user.email "nikola.rendak@gmail.com" &&
