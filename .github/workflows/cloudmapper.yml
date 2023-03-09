@@ -32,11 +32,6 @@ jobs:
         python cloudmapper.py prepare --account Nikola_test_4 &&
         pwd &&
         ls &&
-        cd account-data &&
-        ls &&
-        cd Nikola_test_4 &&
-        pwd &&
-        ls &&
         cp -r /opt/cloudmapper/account-data/ /cloudmapper/account-data/ &&
         apt-get install -y git &&
         cd /cloudmapper/account-data/ &&
