@@ -33,7 +33,7 @@ jobs:
         python cloudmapper.py collect --account Nikola_test_4 &&
         python cloudmapper.py report --account Nikola_test_4 &&
         python cloudmapper.py prepare --account Nikola_test_4" &&
-        cp -r cloudmapper-data-nikola /account-data/test &&
+        cp -r cloudmapper-data-nikola:/cloudmapper/account-data /account-data/test &&
         git add . && git commit -m "Update account-data-nikola directory" &&
         git push origin main
         sleep 45"
