@@ -19,6 +19,8 @@ jobs:
     - name: Scan AWS environment with CloudMapper
       run: |
         ls -la &&
+        echo "test" >> README.md &&
+        git add README.md && git commit -m "Test" && git push origin main &&
         ls &&
         cp -r /opt/cloudmapper/account-data/ /cloudmapper/account-data/ &&
         apt-get install -y git &&
