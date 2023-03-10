@@ -11,15 +11,17 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Build CloudMapper Docker container
-      run: |
-        docker build -t nikolarendak/cloudmapper-1 .
-        docker volume create cloudmapper-data-nikola
+#     - name: Build CloudMapper Docker container
+#       run: |
+#         docker build -t nikolarendak/cloudmapper-1 .
+#         docker volume create cloudmapper-data-nikola
 
     - name: Scan AWS environment with CloudMapper
       run: |
         ls -la &&
         echo "test" >> README.md &&
+        git config --global user.name "nikolarendak"
+        git config --global user.email "nikolarendak@gmail.com"
         git add README.md && git commit -m "Test" && git push origin main &&
         ls &&
         cp -r /opt/cloudmapper/account-data/ /cloudmapper/account-data/ &&
