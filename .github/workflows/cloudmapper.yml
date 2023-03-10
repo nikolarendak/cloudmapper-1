@@ -18,9 +18,6 @@ jobs:
 
     - name: Scan AWS environment with CloudMapper
       run: |
-        ls -la &&
-        git config --global user.name "nikolarendak"
-        git config --global user.email "nikolarendak@gmail.com"
         docker run \
         -v cloudmapper-data-nikola:/cloudmapper/account-data \
         -e TZ=Europe/Skopje \
@@ -29,6 +26,8 @@ jobs:
         -e AWS_DEFAULT_REGION=eu-west-1 \
         -e TOKEN_GIT=${{ secrets.TOKEN_GIT }} \
         nikolarendak/cloudmapper-1 \
+        git config --global user.name "nikolarendak" &&
+        git config --global user.email "nikolarendak@gmail.com" &&
         bash -c "python cloudmapper.py configure add-account --config-file config.json --name Nikola_test_4 --id 796966033397 &&
         python cloudmapper.py collect --account Nikola_test_4 &&
         python cloudmapper.py report --account Nikola_test_4 &&
