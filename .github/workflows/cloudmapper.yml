@@ -11,27 +11,29 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-#     - name: Build CloudMapper Docker container
-#       run: |
-#         docker build -t nikolarendak/cloudmapper-1 .
-#         docker volume create cloudmapper-data-nikola
+    - name: Build CloudMapper Docker container
+      run: |
+        docker build -t nikolarendak/cloudmapper-1 .
+        docker volume create cloudmapper-data-nikola
 
     - name: Scan AWS environment with CloudMapper
       run: |
         ls -la &&
-        echo "test" >> README.md &&
         git config --global user.name "nikolarendak"
         git config --global user.email "nikolarendak@gmail.com"
-        git add README.md && git commit -m "Test" && git push origin main &&
-        ls &&
-        cp -r /opt/cloudmapper/account-data/ /cloudmapper/account-data/ &&
-        apt-get install -y git &&
-        cd /cloudmapper/account-data/ &&
-        git config --global user.email "nikola.rendak@gmail.com" &&
-        git config --global user.name "nikolarendak" &&
-        git init &&
-        git add . &&
-        git commit -m "Update account-data-nikola directory" &&
-        git remote add origin https://github.com/nikolarendak/cloudmapper-1.git &&
-        git push -u origin main
+        docker run \
+        -v cloudmapper-data-nikola:/cloudmapper/account-data \
+        -e TZ=Europe/Skopje \
+        -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
+        -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
+        -e AWS_DEFAULT_REGION=eu-west-1 \
+        -e TOKEN_GIT=${{ secrets.TOKEN_GIT }} \
+        nikolarendak/cloudmapper-1 \
+        bash -c "python cloudmapper.py configure add-account --config-file config.json --name Nikola_test_4 --id 796966033397 &&
+        python cloudmapper.py collect --account Nikola_test_4 &&
+        python cloudmapper.py report --account Nikola_test_4 &&
+        python cloudmapper.py prepare --account Nikola_test_4" &&
+        cp -r cloudmapper-data-nikola /account-data/test &&
+        git add . && git commit -m "Update account-data-nikola directory" &&
+        git push origin main
         sleep 45"
