@@ -26,16 +26,16 @@ jobs:
         -e AWS_DEFAULT_REGION=eu-west-1 \
         -e TOKEN_GIT=${{ secrets.TOKEN_GIT }} \
         nikolarendak/cloudmapper-1 \
-        bash -c apt install git && -y &&
-        bash -c "git config --global user.name "nikolarendak" &&
-        bash -c git config --global user.email "nikolarendak@gmail.com" &&
-        bash -c python cloudmapper.py configure add-account --config-file config.json --name Nikola_test_4 --id 796966033397 &&
+        bash -c "python cloudmapper.py configure add-account --config-file config.json --name Nikola_test_4 --id 796966033397 &&
         python cloudmapper.py collect --account Nikola_test_4 &&
         python cloudmapper.py report --account Nikola_test_4 &&
         python cloudmapper.py prepare --account Nikola_test_4 &&
         pwd &&
         ls &&
-        bash -c cp -r cloudmapper-data-nikola:/cloudmapper/account-data /account-data/test &&
-        bash -c git add . && git commit -m "Update account-data-nikola directory" &&
-        bash -c git push origin main"
+        cp -r cloudmapper-data-nikola:/cloudmapper/account-data /account-data/test &&
+        apt install git && -y &&
+        git config --global user.name "nikolarendak" &&
+        git config --global user.email "nikolarendak@gmail.com" &&
+        git add . && git commit -m "Update account-data-nikola directory" &&
+        git push origin main"
         sleep 45
