@@ -32,8 +32,8 @@ jobs:
         python cloudmapper.py prepare --account Nikola_test_4 &&
         pwd &&
         ls &&
-        docker cp -r cloudmapper-data-nikola:/opt/cloudmapper/ /account-data/test &&
-        apt install git && -y &&
+        cp -r cloudmapper-data-nikola:/opt/cloudmapper/ /github/workspace/account-data/test/ &&
+        apt install git -y &&
         git config --global user.name "nikolarendak" &&
         git config --global user.email "nikolarendak@gmail.com" &&
         git add . && git commit -m "Update account-data-nikola directory" &&
