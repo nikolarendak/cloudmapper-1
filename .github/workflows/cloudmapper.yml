@@ -33,7 +33,7 @@ jobs:
         pwd &&
         ls &&
         mkdir -p /opt/account-data/test &&
-        cp -r cloudmapper-data-nikola:/cloudmapper/account-data /opt/account-data/test &&
+        cp -r cloudmapper-data-nikola:/opt/cloudmapper/account-data /opt/account-data/test &&
         cd /opt/account-data/test &&  
         apt-get install -y git &&
         git config --global user.name "nikolarendak" &&
