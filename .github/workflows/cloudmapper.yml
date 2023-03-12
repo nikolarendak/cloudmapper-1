@@ -32,11 +32,11 @@ jobs:
         python cloudmapper.py prepare --account Nikola_test_4 &&
         pwd &&
         ls &&
+        mkdir -p /opt/account-data/test &&
         cp -r cloudmapper-data-nikola:/cloudmapper/account-data /opt/account-data/test &&
-        cd /opt/cloudmapper-data/test && 
+        cd /opt/account-data/test &&  
         apt-get install -y git &&
         git config --global user.name "nikolarendak" &&
         git config --global user.email "nikolarendak@gmail.com" &&
         git add . && git commit -m "Update account-data-nikola directory" &&
-        git push origin main"
-        sleep 45
+        git push origin main && wait"
