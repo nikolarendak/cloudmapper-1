@@ -14,12 +14,12 @@ jobs:
     - name: Build CloudMapper Docker container
       run: |
         docker build -t nikolarendak/cloudmapper-1 .
-        docker volume create cloudmapper-data-nikola
+        docker volume create cloudmapper-data
 
     - name: Scan AWS environment with CloudMapper
       run: |
         docker run \
-        -v cloudmapper-data-nikola:/opt/cloudmapper/ \
+        -v cloudmapper-data-nikola:/opt/cloudmapper/account-data \
         -e TZ=Europe/Skopje \
         -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
         -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
@@ -32,9 +32,9 @@ jobs:
         python cloudmapper.py prepare --account Nikola_test_4 &&
         pwd &&
         ls &&
-        cp cloudmapper-data-nikola:/opt/cloudmapper/ /opt/cloudmapper-data/ &&
-        cd /opt/cloudmapper-data && 
-        apt install git -y &&
+        cp -r cloudmapper-data-nikola:/cloudmapper/account-data /opt/account-data/test &&
+        cd /opt/cloudmapper-data/test && 
+        apt-get install -y git &&
         git config --global user.name "nikolarendak" &&
         git config --global user.email "nikolarendak@gmail.com" &&
         git add . && git commit -m "Update account-data-nikola directory" &&
