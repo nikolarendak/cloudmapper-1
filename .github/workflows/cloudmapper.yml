@@ -32,8 +32,8 @@ jobs:
         python cloudmapper.py prepare --account Nikola_test_4 &&
         pwd &&
         ls &&
-        cp cloudmapper-data-nikola:/opt/cloudmapper/ /tmp/cloudmapper-data/ &&
-        cd /tmp/cloudmapper-data && 
+        cp cloudmapper-data-nikola:/opt/cloudmapper/ /opt/cloudmapper-data/ &&
+        cd /opt/cloudmapper-data && 
         apt install git -y &&
         git config --global user.name "nikolarendak" &&
         git config --global user.email "nikolarendak@gmail.com" &&
