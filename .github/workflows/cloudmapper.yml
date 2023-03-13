@@ -34,8 +34,8 @@ jobs:
         ls &&
         apt-get install -y git &&
         mkdir -p /opt/account-data/test &&
-        cp -r /opt/cloudmapper/account-data/ /opt/account-data/test &&
-        cd /opt/account-data/test &&  
+        docker cp $(docker ps -ql):/opt/cloudmapper/account-data /tmp/account-data &&
+        cd /tmp/account-data &&
         git config --global user.name "nikolarendak" &&
         git config --global user.email "nikolarendak@gmail.com" &&
         git init &&
