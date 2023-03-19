@@ -30,14 +30,9 @@ jobs:
         python cloudmapper.py collect --account Nikola_test_4 &&
         python cloudmapper.py report --account Nikola_test_4 &&
         python cloudmapper.py prepare --account Nikola_test_4 &&
-        pwd &&
-        ls &&
-        apt-get install -y git &&
-        mkdir -p /opt/account-data/test &&
-        docker cp $(docker ps -ql):/opt/cloudmapper/account-data /tmp/account-data &&
-        cd /tmp/account-data &&
+        cp -r /opt/cloudmapper/account-data https://github.com/nikolarendak/cloudmapper-1/ &&
+        cd cloudmapper-1 &&
         git config --global user.name "nikolarendak" &&
         git config --global user.email "nikolarendak@gmail.com" &&
-        git init &&
         git add . && git commit -m "Update account-data-nikola directory" &&
-        git push origin main && wait"
+        git push origin main"
