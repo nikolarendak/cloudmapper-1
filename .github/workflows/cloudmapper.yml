@@ -33,6 +33,7 @@ jobs:
         pwd &&
         ls &&
         cd account-data &&
+        apt-get install -y git &&
         git config --global user.name "nikolarendak" &&
         git config --global user.email "nikolarendak@gmail.com" &&
         git add . && git commit -m "Update account-data-nikola directory" &&
