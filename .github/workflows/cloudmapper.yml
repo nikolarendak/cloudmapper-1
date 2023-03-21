@@ -32,7 +32,7 @@ jobs:
         python cloudmapper.py prepare --account Nikola_test_4 &&
         pwd &&
         ls &&
-        cd opt/cloudmapper/account-data &&
+        cd account-data &&
         git config --global user.name "nikolarendak" &&
         git config --global user.email "nikolarendak@gmail.com" &&
         git add . && git commit -m "Update account-data-nikola directory" &&
