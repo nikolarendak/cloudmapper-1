@@ -30,7 +30,6 @@ jobs:
         python cloudmapper.py collect --account Nikola_test_4 &&
         python cloudmapper.py report --account Nikola_test_4 &&
         python cloudmapper.py prepare --account Nikola_test_4 &&
-        docker cp $(docker ps -ql):/opt/cloudmapper/account-data cloudmapper-1/ &&
         cd cloudmapper-1 &&
         git config --global user.name "nikolarendak" &&
         git config --global user.email "nikolarendak@gmail.com" &&
