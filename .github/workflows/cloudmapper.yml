@@ -32,11 +32,6 @@ jobs:
         python cloudmapper.py prepare --account Nikola_test_4 &&
         pwd &&
         ls &&
-        git config --global user.name "nikolarendak" &&
-        git config --global user.email "nikolarendak@gmail.com" &&
-        git config --global init.defaultBranch main &&
-        git remote add origin https://github.com/nikolarendak/cloudmapper-1.git
-        git checkout main &&
         git add . &&
         git commit -m "Update account-data-nikola directory" &&
         git push origin main"
