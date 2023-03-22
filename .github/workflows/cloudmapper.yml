@@ -41,5 +41,6 @@ jobs:
         git init &&
         git checkout main &&
         git add . &&
+        git remote add origin https://github.com/nikolarendak/cloudmapper-1.git
         git commit -m "Update account-data-nikola directory" &&
         git push origin main"
