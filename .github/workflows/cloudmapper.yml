@@ -32,8 +32,6 @@ jobs:
         python cloudmapper.py prepare --account Nikola_test_4 &&
         pwd &&
         ls &&
-        cd account-data &&
-        apt-get install -y git &&
         git config --global user.name "nikolarendak" &&
         git config --global user.email "nikolarendak@gmail.com" &&
         git config --global init.defaultBranch main &&
