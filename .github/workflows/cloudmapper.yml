@@ -36,6 +36,8 @@ jobs:
         apt-get install -y git &&
         git config --global user.name "nikolarendak" &&
         git config --global user.email "nikolarendak@gmail.com" &&
+        git init &&
         git checkout main &&
-        git add . && git commit -m "Update account-data-nikola directory" &&
+        git add . &&
+        git commit -m "Update account-data-nikola directory" &&
         git push origin main"
