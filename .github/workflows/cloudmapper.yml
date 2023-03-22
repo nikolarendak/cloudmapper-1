@@ -32,6 +32,7 @@ jobs:
         python cloudmapper.py prepare --account Nikola_test_4 &&
         pwd &&
         ls &&
+        apt-get install -y git &&
         git add . &&
         git commit -m "Update account-data-nikola directory" &&
         git push origin main"
