@@ -33,6 +33,10 @@ jobs:
         pwd &&
         ls &&
         apt-get install -y git &&
+        git config --global nikolarendak &&
+        git config --global nikola.rendak@gmail.com &&
+        git remote add origin https://github.com/nikolarendak/cloudmapper-1.git &&
+        git add . &&
         git add . &&
         git commit -m "Update account-data-nikola directory" &&
         git push origin main"
